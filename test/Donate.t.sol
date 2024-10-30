@@ -14,27 +14,21 @@ contract DonateTest is Test {
 
     event DonateSuccess(address indexed donor, uint256 amount);
     event NewOwnerInserted(address indexed owner, address[] owners);
-    event WithdrawalSuccess(
-        address indexed to,
-        uint256 amount,
-        uint256 totalBalance
-    );
+    event WithdrawalSuccess(address indexed to, uint256 amount, uint256 totalBalance);
 
     function setUp() external {
         donate = new Donate();
     }
 
     function _send() private {
-        (bool success, ) = address(donate).call{value: 100000000000000000}(""); // This line will call the Receive function
+        (bool success,) = address(donate).call{value: 100000000000000000}(""); // This line will call the Receive function
         if (!success) {
             revert DonateTest__TransferFailed();
         }
     }
 
     function _sendWithoutData() private {
-        (bool success, ) = address(donate).call{value: 100000000000000000}(
-            "Some Data"
-        ); // This line will call the Fallback function
+        (bool success,) = address(donate).call{value: 100000000000000000}("Some Data"); // This line will call the Fallback function
         if (!success) {
             revert DonateTest__TransferFailed();
         }
@@ -155,9 +149,7 @@ contract DonateTest is Test {
         donate.withdrawal(address(0), 50000000000000000);
     }
 
-    function testRevertIfTheWithdrawalReceiverIsNotExistedInOwnersList()
-        public
-    {
+    function testRevertIfTheWithdrawalReceiverIsNotExistedInOwnersList() public {
         // Act Before Arrange because I'm testing if the owner is exsit or not
         // Why I need this blew link in this funciton is I'm checking if the owner Isn't exist.
         // Because I need data in owners list. If there are no data. Will get a differet Revert.
@@ -199,11 +191,7 @@ contract DonateTest is Test {
         // Arrange
         vm.expectEmit(true, false, false, false);
         // Act -
-        emit WithdrawalSuccess(
-            receiver,
-            50000000000000000,
-            donate.getTotalBalance()
-        );
+        emit WithdrawalSuccess(receiver, 50000000000000000, donate.getTotalBalance());
         // Assert
         vm.prank(0xdD870fA1b7C4700F2BD7f44238821C26f7392148);
         donate.withdrawal(receiver, 50000000000000000);
