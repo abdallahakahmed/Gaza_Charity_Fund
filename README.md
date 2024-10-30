@@ -1,5 +1,5 @@
 ## Gaza Charity Fund Smart Contract
-<h3>This project is a Solidity-based smart contract for a crowdsourced charity fund. The contract enables users to donate Ether to a fund and restricts withdrawals to specific pre-approved addresses, based on defined conditions. The contract is designed for transparency, ease of access, and security, allowing for conditional withdrawal functionality.</h3>
+<p>This project is a Solidity-based smart contract for a crowdsourced charity fund. The contract enables users to donate Ether to a fund and restricts withdrawals to specific pre-approved addresses, based on defined conditions. The contract is designed for transparency, ease of access, and security, allowing for conditional withdrawal functionality.</p>
 
 ## Project Structure
 
