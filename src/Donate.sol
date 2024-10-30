@@ -28,7 +28,6 @@ pragma solidity ^0.8.27;
  * @title   . Gaza Charity Fund
  * @notice  . This Contract will allow donors to donate to gaza people through this dapp. The donate just in Ethereum cryptocurrency.
  */
-
 contract Donate {
     error Donate__AmountIsLessThanMinimum();
     error Donate__Unauthorized();
@@ -42,22 +41,17 @@ contract Donate {
 
     uint256 private constant MINIMUM_DONATE = 20000000000000000;
     uint256 private constant TOTAL_REQUIRED_AMOUNT = 5000000000000000000;
-    address private immutable i_owner =
-        0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
+    address private immutable i_owner = 0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
     uint256 private totalBalance;
 
     address[] private s_donors;
     address[] private s_owners;
-    mapping(address => uint) private _balances;
-    mapping(address => uint) private _owners;
+    mapping(address => uint256) private _balances;
+    mapping(address => uint256) private _owners;
 
     /* Events */
     event DonateSuccess(address indexed donor, uint256 amount);
-    event WithdrawalSuccess(
-        address indexed to,
-        uint256 amount,
-        uint256 totalBalance
-    );
+    event WithdrawalSuccess(address indexed to, uint256 amount, uint256 totalBalance);
     event NewOwnerInserted(address indexed owner, address[] owners);
 
     modifier OnlyOwner() {
