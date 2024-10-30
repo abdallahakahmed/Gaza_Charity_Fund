@@ -1,21 +1,18 @@
-## Foundry
+## Gaza Charity Fund Smart Contract
+<h3>This project is a Solidity-based smart contract for a crowdsourced charity fund. The contract enables users to donate Ether to a fund and restricts withdrawals to specific pre-approved addresses, based on defined conditions. The contract is designed for transparency, ease of access, and security, allowing for conditional withdrawal functionality.</h3>
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Project Structure
 
-Foundry consists of:
+* Donate.sol: The main contract file that defines the donation and withdrawal functionalities.
+* DonorTest.sol: A testing file that uses Foundry to simulate donation and withdrawal scenarios.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features
+* Donation Mechanism: Users can send Ether to the charity fund using the donate function, with a minimum donation amount requirement.
+* Authorized Withdrawals: Only specific pre-approved addresses (e.g., the fund owner) can withdraw funds from the contract.
+* Condition Verification: Withdrawals are permitted only when certain conditions are met (e.g., reaching a target donation amount).
+* Error Handling: Custom error messages are thrown when users attempt unauthorized actions or transactions fail.
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
+### Setup and Installation
 
 ```shell
 $ forge build
